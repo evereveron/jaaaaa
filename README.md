@@ -1,3 +1,3 @@
-awesome-thing
+jasmine and anji's awesome adventure app
 =============
-aka JAAAMMORPG - Jasmine and Anji's Awesome MMORPG 
+aka JAAAAA
