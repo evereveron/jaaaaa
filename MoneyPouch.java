@@ -6,35 +6,52 @@
 
 public class MoneyPouch { 
 
-	int gold; 
-	int silver; 
-	int copper; 
-	int iron; // v rare!!! u can only get one if u run into Jaqen H'gar.
+	private int gold; 
+	private int silver; 
+	private int copper; 
+	private int iron; // v rare!!! u can only get one if u run into Jaqen H'gar.
+	private int total; // total value of your coins 
+	private int goldRate = 500; 
+	private int silverRate = 50; // exchange rates can change
+
+	// magical money pouch!! 
+	// automatically converts to highest coins after every transaction 
+	// coppers are the base currency 
 
 	public MoneyPouch() { 
 		gold = 0; 
 		silver = 0; 
 		copper = 0; 
 		iron = 0; 
+		total = 0; 
 	}
 
 	public void add(int gold, int silver, int copper) { 
-		// lol this is so shitty!!! 
-		// can you use keyword arguments in java????? 
-		// ugh should have just used python 
-		// ha i found one way python is better than java s
-		this.gold += gold; 
-		this.silver += silver; 
-		this.copper += copper; 
+		int subtotal = gold * goldRate + silver * silverRate + copper; 
+		this.total += subtotal; 
+		fix_coins();
+		return; 
 	}
 
 	public void remove(int gold, int silver, int copper) {
-		this.gold -= gold; 
-		this.silver -= silver; 
-		this.copper -= copper; 
+		int subtotal = gold * goldRate + silver * silverRate + copper; 
+		this.total -= subtotal;
+		fix_coins();
+		return; 
 	}
 
-	// so annoying lol would it be better to just use dollar amounts?? 
-	// or like only one type of coin 
+	private void fix_coins(){
+		int remaining = this.total; 
+		this.gold = remaining%goldRate; 
+		remaining -= this.gold*goldRate; 
+		this.silver = remaining%silverRate; 
+		remaining -= this.silver*silverRate; 
+		this.copper = remaining; 
+		return; 
+	}
+
+	public String toString() { 
+		return gold + "golds," + silver + "silvers," + copper + "coppers."; 
+	}
 
 }
