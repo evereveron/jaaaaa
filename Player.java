@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Player { 
 
-	String name; 
-	ArrayList<Item> inventory; 
-	String affiliation; 
-	MoneyPouch wallet; 
+	public String name; 
+	private ArrayList<Item> inventory; 
+	private String affiliation; 
+	private MoneyPouch wallet; 
 
 	public Player(String name) { 
 		this.name = name;

@@ -15,8 +15,11 @@ public class Food extends Item {
 			String description = 
 				"a delicious combination of tomato and flour and cheese!!!"; 
 		} else if (name == "apple") { 
-			String description = "a typical apple"; 
+			String description = "a typical apple."; 
+		} else if (name == "escargot") {
+			String description = "a cooked snail."; 
 		}
+
 		return description; 
 	}
 
