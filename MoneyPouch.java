@@ -6,10 +6,10 @@
 
 public class MoneyPouch { 
 
-	int gold; 
-	int silver; 
-	int copper; 
-	int iron; // v rare!!! u can only get one if u run into Jaqen H'gar.
+	private int gold; 
+	private int silver; 
+	private int copper; 
+	private int iron; // v rare!!! u can only get one if u run into Jaqen H'gar.
 
 	public MoneyPouch() { 
 		gold = 0; 

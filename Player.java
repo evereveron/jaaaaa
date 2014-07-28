@@ -5,15 +5,18 @@ import java.util.ArrayList;
 public class Player { 
 
 	String name; 
-	ArrayList<String> inventory; 
+	ArrayList<Item> inventory; 
 	String affiliation; 
 	MoneyPouch wallet; 
 
 	public Player(String name) { 
 		this.name = name;
-		inventory = new ArrayList<String>(); 
+		inventory = new ArrayList<Item>(); 
 		wallet = new MoneyPouch(); 
 	} 
 
+	private void addInventory(Item thing){
+		inventory.add(thing); 
+	}
 
-}
+} 
