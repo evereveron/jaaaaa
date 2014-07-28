@@ -18,6 +18,7 @@ public class Jaaaaa {
     private static final String MENU = "m"; //should this be map
     private static final String HELP = "?";
     private static final String QUIT = "q";
+    private static final String MONEY = "$"; 
 
 
     public static void main(String[] args) {
@@ -29,7 +30,8 @@ public class Jaaaaa {
         String name = scanner.nextLine();
         Player player = new Player(name);
         System.out.println("Hi " + name + "!");
-
+        System.out.println("here is a free silver coin to start you on your journey."); 
+        player.addCoins(0,1,0); 
         boolean play = true;
         while(play) {
             runRound(player);
@@ -67,6 +69,8 @@ public class Jaaaaa {
             case QUIT:
                 quitGame();
                 break;
+            case MONEY: 
+                System.out.println(player.getWallet()); 
         }
 
         //roll for random event
@@ -91,6 +95,7 @@ public class Jaaaaa {
         System.out.println("(p) open pet menu");
         System.out.println("(l) look around");
         System.out.println("(0) laze about");
+        System.out.println("($) check wallet"); 
 
     }
 

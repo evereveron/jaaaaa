@@ -15,8 +15,20 @@ public class Player {
 		wallet = new MoneyPouch(); 
 	} 
 
-	private void addInventory(Item thing){
+	public void addInventory(Item thing){
 		inventory.add(thing); 
+	}
+
+	public void addCoins(int gold, int silver, int copper) {
+		wallet.add(gold, silver, copper); 
+	}
+
+	public void removeCoins(int gold, int silver, int copper) {
+		wallet.remove(gold, silver, copper); 
+	}
+
+	public MoneyPouch getWallet(){ 
+		return wallet; 
 	}
 
 } 
