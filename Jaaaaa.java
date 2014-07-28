@@ -1,11 +1,11 @@
 import java.io.*;
 import java.io.DataInputStream;
+import java.util.Scanner;
 
 
 public class Jaaaaa {
 
-    DataInputStream stream = new DataInputStream(System.in);
-    boolean play = true;
+    private static Scanner scanner = new Scanner(System.in);
 
     private static final String NORTH = "n";
     private static final String SOUTH = "s";
@@ -21,15 +21,16 @@ public class Jaaaaa {
 
 
     public static void main(String[] args) {
+        clearScreen();
         System.out.println("Welcome to Jasmine and Anji's Awesome Adventure App");
         System.out.println("--------------------------------------------------- \n");
         System.out.println("Wut ur name bro: ");
 
-        DataInputStream stream = new DataInputStream(System.in);
-        String name = stream.readLine();
+        String name = scanner.nextLine();
         Player player = new Player(name);
         System.out.println("Hi " + name + "!");
 
+        boolean play = true;
         while(play) {
             runRound(player);
         }
@@ -37,9 +38,9 @@ public class Jaaaaa {
     }
 
     //cases will be implemented as methods are made.
-    private runRound(Player player){
+    private static void runRound(Player player){
         System.out.print("Action: ");
-        int action = stream.readLine();
+        String action = scanner.nextLine();
 
         switch(action) {
             case NORTH:
@@ -80,7 +81,7 @@ public class Jaaaaa {
     this method displays the menu. only called when asked for.
     otherwise it's annoying to see the menu pop up every time you just want to travel.
      */
-    private void displayMainMenu(){
+    private static void displayMainMenu(){
         System.out.println("~~~~ ACTION MENU ~~~~ \n");
         System.out.println("(n) move north");
         System.out.println("(s) move south");
@@ -93,15 +94,15 @@ public class Jaaaaa {
 
     }
 
-    private void clearScreen() {
+    private static void clearScreen() {
         for(int i=0; i<20; i++) {
             System.out.println("");
         }
     }
 
-    private void quitGame() {
+    private static void quitGame() {
         System.out.println("Are you sure you want to quit? Progress is not saved.");
-        boolean quit = stream.readLine();
+        boolean quit = scanner.nextBoolean();
         if(quit) {
             System.out.println("have a nice day :)");
             System.exit(0);
