@@ -21,7 +21,7 @@ public class Item {
 	}
 
 	public int getValue(String name) {
-		return self.value; 
+		return value; 
 	} 
 
 }

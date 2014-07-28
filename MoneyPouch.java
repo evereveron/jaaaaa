@@ -10,13 +10,12 @@ public class MoneyPouch {
 	private int silver; 
 	private int copper; 
 	private int iron; // v rare!!! u can only get one if u run into Jaqen H'gar.
-	private int total; // total value of your coins 
+	private int total; // total value of your coins in coppers 
 	private int goldRate = 500; 
 	private int silverRate = 50; // exchange rates can change
 
 	// magical money pouch!! 
 	// automatically converts to highest coins after every transaction 
-	// coppers are the base currency 
 
 	public MoneyPouch() { 
 		gold = 0; 
