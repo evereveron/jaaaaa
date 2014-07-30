@@ -4,7 +4,7 @@ public class Item {
 
 	public String name;
 	public String description;
-	private int value; 
+	public int value; 
 
 	public Item(String name) { 
 		this.name = name;

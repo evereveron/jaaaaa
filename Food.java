@@ -12,38 +12,37 @@ public class Food extends Item {
 	}
 
 	public String describe(String name) { 
-		if (name == "pizza") {
-			String description = 
-				"a delicious combination of tomato and flour and cheese!!!"; 
-		} else if (name == "apple") { 
-			String description = "a typical apple."; 
-		} else if (name == "escargot") {
-			String description = "a cooked snail."; 
+		if (name.equals("pizza")) {
+			description = "a delicious combination of tomato and flour and cheese!!!"; 
+		} else if (name.equals("apple")) { 
+			description = "a typical apple - juicy, delicious, fruity."; 
+		} else if (name.equals("escargot")) {
+			description = "a cooked snail from the faraway kingdom of France."; 
 		} else {
-			String description = "a food."; 
+			description = "a food."; 
 		}
 		return description; 
 	}
 
-	private int setHealth(String name) {
-		if (name == "pizza") {
-			int health = 5;
-		} else if (name == "apple") { 
-			int health = 10;
-		} else if (name == "escargot") {
-			int health = 12; 
+	public int setHealth(String name) {
+		if (name.equals("pizza")) {
+			health = 5;
+		} else if (name.equals("apple")) { 
+			health = 10;
+		} else if (name.equals("escargot")) {
+			health = 12; 
 		} else { 
-			int health = 0; 
+			health = 0; 
 		}
 		return health; 
 	} 
 
-	private int setValue(String name) {
-		if (name == "pizza") {
+	public int setValue(String name) {
+		if (name.equals("pizza")) {
 			int value = 50; 
-		} else if (name == "apple") {
+		} else if (name.equals("apple")) {
 			int value = 5; 
-		} else if (name == "escargot") {
+		} else if (name.equals("escargot")) {
 			int value = 100; 
 		} else {
 			int value = 10; 
@@ -52,6 +51,6 @@ public class Food extends Item {
 	}
 
 	public int getHealth(String name) {
-		return self.health; 
+		return health; 
 	}
 }

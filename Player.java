@@ -7,7 +7,7 @@ import java.util.Map;
 public class Player { 
 
 	public String name; 
-	private ArrayList<Item> inventory; //this would ideally be a hashmap
+	private Inventory inventory; // currently uses an ArrayList to hold items change to hashmap? 
     private Map<String, Item> equipment;
 	private String affiliation; 
 	private MoneyPouch wallet;
@@ -19,7 +19,7 @@ public class Player {
 
 	public Player(String name) { 
 		this.name = name;
-		inventory = new ArrayList<Item>(); 
+		inventory = new Inventory(); 
 		wallet = new MoneyPouch(); 
 	} 
 
@@ -83,7 +83,7 @@ public class Player {
         return wallet;
     }
 
-    public ArrayList<Item> getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 

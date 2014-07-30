@@ -59,7 +59,8 @@ public class Jaaaaa {
             case EAST:
                 break;
             case INVENTORY:
-                System.out.println("your inventory: " + player.getInventory()); 
+                System.out.println(player.getInventory()); 
+                player.getInventory().inventoryMenu(); 
                 break;
             case PET:
                 break;
@@ -153,7 +154,7 @@ public class Jaaaaa {
         System.out.println("here are a free silver coin and a healthy red apple " 
                 + "to start you on your journey!\n");
         player.addCoins(0,1,0);
-        player.addInventory(new Item("apple")); 
+        player.addInventory(new Food("apple")); 
         System.out.println("your initial stats: "); 
         setupManager.initPlayer(player);
         setupManager.initMonsters(combatEngine);
