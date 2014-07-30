@@ -110,4 +110,14 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
+
+	public void addCoins(int gold, int silver, int copper) {
+		wallet.add(gold, silver, copper); 
+	}
+
+	public void removeCoins(int gold, int silver, int copper) {
+		wallet.remove(gold, silver, copper); 
+	}
+
+
 }

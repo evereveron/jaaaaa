@@ -41,16 +41,16 @@ public class MoneyPouch {
 
 	private void fix_coins(){
 		int remaining = this.total; 
-		this.gold = remaining%goldRate; 
+		this.gold = remaining/goldRate; 
 		remaining -= this.gold*goldRate; 
-		this.silver = remaining%silverRate; 
+		this.silver = remaining/silverRate; 
 		remaining -= this.silver*silverRate; 
 		this.copper = remaining; 
 		return; 
 	}
 
 	public String toString() { 
-		return gold + "golds," + silver + "silvers," + copper + "coppers."; 
+		return gold + " gold(s), " + silver + " silver(s), " + copper + " copper(s)."; 
 	}
 
 }

@@ -21,6 +21,7 @@ public class Jaaaaa {
     private static final String HELP = "?";
     private static final String QUIT = "q";
     private static final String STATS = "t"; //why is this t, idk.
+    private static final String MONEY = "$";
 
 
     public static void main(String[] args) {
@@ -76,6 +77,8 @@ public class Jaaaaa {
             case STATS:
                 player.displayStats();
                 break;
+            case MONEY:
+                System.out.println(player.getWallet());
             default:
                 System.out.println("not a valid command");
                 return true;
@@ -106,6 +109,7 @@ public class Jaaaaa {
         System.out.println("(p) open pet menu");
         System.out.println("(l) look around");
         System.out.println("(0) laze about");
+        System.out.println("($) check wallet"); 
 
     }
 
@@ -142,8 +146,10 @@ public class Jaaaaa {
         String name = scanner.nextLine();
         Player player = new Player(name);
         System.out.println("\nHi " + name + "!\n");
+        System.out.println("here is a free silver coin to start you on your journey.");
+        player.addCoins(0,1,0);
 
-        setupManager.initPlayer(player);
+            setupManager.initPlayer(player);
         setupManager.initMonsters(combatEngine);
 
         return player;
