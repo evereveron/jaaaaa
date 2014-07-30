@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Jaaaaa {
 
     private static Scanner scanner = new Scanner(System.in);
+    private static CombatEngine combatEngine = new CombatEngine();
+    private static SetupManager setupManager = new SetupManager();
 
     private static final String NORTH = "n";
     private static final String SOUTH = "s";
@@ -18,27 +20,31 @@ public class Jaaaaa {
     private static final String MENU = "m"; //should this be map
     private static final String HELP = "?";
     private static final String QUIT = "q";
+    private static final String STATS = "t"; //why is this t, idk.
 
 
     public static void main(String[] args) {
-        clearScreen();
-        System.out.println("Welcome to Jasmine and Anji's Awesome Adventure App");
-        System.out.println("--------------------------------------------------- \n");
-        System.out.println("Wut ur name bro: ");
+        Player player = startGame();
 
-        String name = scanner.nextLine();
-        Player player = new Player(name);
-        System.out.println("Hi " + name + "!");
-
-        boolean play = true;
-        while(play) {
-            runRound(player);
+        boolean alive = true;
+        while(alive) {
+            alive = runRound(player);
+            if(!alive) {
+                System.out.println("\nonce more into the abyss?");
+                boolean again = scanner.nextBoolean();
+                if(again) {
+                    player = startGame();
+                }
+                else {
+                    System.out.println("\nhave a nice day :)");
+                }
+            }
         }
 
     }
 
     //cases will be implemented as methods are made.
-    private static void runRound(Player player){
+    private static boolean runRound(Player player){
         System.out.print("Action: ");
         String action = scanner.nextLine();
 
@@ -67,14 +73,23 @@ public class Jaaaaa {
             case QUIT:
                 quitGame();
                 break;
+            case STATS:
+                player.displayStats();
+                break;
+            default:
+                System.out.println("not a valid command");
+                return true;
         }
 
         //roll for random event
 
-
         //roll for combat?
-
-
+        //should be random. right now it is forced:
+        boolean alive = combatEngine.CombatRound(1, player);
+        if(!alive) {
+            return false;
+        }
+        return true;
     }
 
     /*
@@ -101,8 +116,14 @@ public class Jaaaaa {
     }
 
     private static void quitGame() {
-        System.out.println("Are you sure you want to quit? Progress is not saved.");
-        boolean quit = scanner.nextBoolean();
+        System.out.println("Are you sure you want to quit? Progress is not saved. (true/false)");
+        boolean quit = true;
+        try {
+            quit = scanner.nextBoolean();
+        }catch (Exception e){
+            System.out.println("Error: wrong input");
+            return;
+        }
         if(quit) {
             System.out.println("have a nice day :)");
             System.exit(0);
@@ -110,5 +131,21 @@ public class Jaaaaa {
         else {
             return;
         }
+    }
+
+    private static Player startGame() {
+        clearScreen();
+        System.out.println("Welcome to Jasmine and Anji's Awesome Adventure App");
+        System.out.println("--------------------------------------------------- \n");
+        System.out.println("Wut ur name bro: ");
+
+        String name = scanner.nextLine();
+        Player player = new Player(name);
+        System.out.println("\nHi " + name + "!\n");
+
+        setupManager.initPlayer(player);
+        setupManager.initMonsters(combatEngine);
+
+        return player;
     }
 }
