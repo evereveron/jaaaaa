@@ -59,6 +59,7 @@ public class Jaaaaa {
             case EAST:
                 break;
             case INVENTORY:
+                System.out.println("your inventory: " + player.getInventory()); 
                 break;
             case PET:
                 break;
@@ -79,6 +80,7 @@ public class Jaaaaa {
                 break;
             case MONEY:
                 System.out.println(player.getWallet());
+                break;
             default:
                 System.out.println("not a valid command");
                 return true;
@@ -110,6 +112,8 @@ public class Jaaaaa {
         System.out.println("(l) look around");
         System.out.println("(0) laze about");
         System.out.println("($) check wallet"); 
+        System.out.println("(t) view stats"); 
+        System.out.println("(q) quit game"); 
 
     }
 
@@ -129,7 +133,7 @@ public class Jaaaaa {
             return;
         }
         if(quit) {
-            System.out.println("have a nice day :)");
+            System.out.println("remember, winners never quit and quitters never win! goodbye.");
             System.exit(0);
         }
         else {
@@ -146,10 +150,12 @@ public class Jaaaaa {
         String name = scanner.nextLine();
         Player player = new Player(name);
         System.out.println("\nHi " + name + "!\n");
-        System.out.println("here is a free silver coin to start you on your journey.");
+        System.out.println("here are a free silver coin and a healthy red apple " 
+                + "to start you on your journey!\n");
         player.addCoins(0,1,0);
-
-            setupManager.initPlayer(player);
+        player.addInventory(new Item("apple")); 
+        System.out.println("your initial stats: "); 
+        setupManager.initPlayer(player);
         setupManager.initMonsters(combatEngine);
 
         return player;

@@ -24,4 +24,8 @@ public class Item {
 		return value; 
 	} 
 
+	public String toString() {
+		return name; 
+	}
+
 }

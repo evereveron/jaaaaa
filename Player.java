@@ -28,7 +28,7 @@ public class Player {
 	}
 
     public void displayStats() {
-        System.out.println("health:\t" + this.health);
+        System.out.println("health\t" + this.health);
         System.out.println("luck\t" + this.luck);
         System.out.println("intelligence\t" + this.intelligence);
         System.out.println("strength\t" + this.strength);
